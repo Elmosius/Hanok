@@ -5,14 +5,38 @@
 @layer base {
   :root {
     font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    /* scrollbar-width: none; */
   }
 }
 
 @theme {
   --color-primary: #faf7f2;
   --color-secondary: #d7c4ac;
-  --color-accent: #1c1a18;
+  --color-accent: #000;
 }
 
 @layer components {
+  btn {
+    @apply cursor-pointer;
+  }
+
+  img {
+    @apply object-cover w-full h-full;
+  }
+
+  li {
+    @apply list-none cursor-pointer;
+  }
+
+  .navHover {
+    @apply w-4 h-4 md:w-5 md:h-5 transition-transform duration-400 group-hover:rotate-180;
+  }
+
+  .borderNavList {
+    @apply pointer-events-none absolute left-0 bottom-0 h-[2px] w-1/2 origin-left scale-x-0 bg-red-100;
+  }
+  .borderNavList2 {
+    @apply pointer-events-none absolute left-0 bottom-0 h-[2px] w-1/2 origin-left scale-x-0 bg-accent;
+  }
 }
