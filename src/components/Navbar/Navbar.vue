@@ -5,6 +5,7 @@ import { IMAGE_ARCHITECTURE, IMAGE_GALLERY, IMAGE_HOME, IMAGE_INTERIOR } from '.
 import { onMounted, ref, watch } from 'vue';
 import NavList from '../NavList';
 import { navList } from './navbar';
+import {useScrollLock} from "../../utils/scrollLock.ts";
 
 const image = ref(IMAGE_HOME[0]);
 const imgRef = ref<HTMLElement | null>(null);
@@ -19,6 +20,8 @@ const { openNav } = defineProps<{
   openNav: boolean;
 }>();
 
+const { scrollToId } = useScrollLock();
+
 onMounted(() => {
   if (!containerOverlay.value || !contentOverlay.value) return;
 
@@ -29,13 +32,16 @@ onMounted(() => {
 watch(
   () => openNav,
   (isOpen) => {
+
     const tl = gsap.timeline();
     if (isOpen) {
+
       tl.to(containerOverlay.value, { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 175%)', duration: 1.5, ease: 'expo.inOut' }).to(
         contentOverlay.value,
         { opacity: 1, scale: 1, rotate: 0, duration: 1.5, translateX: 0, translateY: 0, ease: 'expo.inOut' },
         0
       );
+
     } else {
       tl.to(containerOverlay.value, { clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)', duration: 1.5, ease: 'expo.inOut' }).to(
         contentOverlay.value,
@@ -103,7 +109,10 @@ const changeImage = (index: number) => {
           <ul class="text-5xl md:text-6xl lg:text-5xl font-medium flex flex-col gap-y-5">
             <NavList v-for="(item, i) in navList" :key="i">
               <li class="relative pb-2 cursor-pointer" @mouseenter="changeImage(i)">
-                <span>{{ item }}</span>
+                <button  @click="() => {
+                  emits('toggleNav')
+                  scrollToId(item.id)
+                }">{{ item.name }}</button>
                 <span class="borderNavList" />
                 <span class="borderNavList2" />
               </li>
