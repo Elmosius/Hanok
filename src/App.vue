@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import { useScrollLock } from "./utils/scrollLock.ts";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { VueLenis } from "lenis/vue";
+import Hero from "./components/Hero";
 
 const lenisRef = ref();
 const { lock, unlock } = useScrollLock();
@@ -27,7 +28,7 @@ const toggleNav = () => {
       scale: 1.5,
       duration: 1.5,
       ease: "power4.inOut",
-      delay: 0.1,
+      delay: 0.2,
     });
   } else {
     unlock();
@@ -36,7 +37,7 @@ const toggleNav = () => {
       x: 0,
       y: 0,
       scale: 1,
-      duration: 1.5,
+      duration: 1.2,
       ease: "power4.inOut",
     });
   }
@@ -67,20 +68,7 @@ onMounted(() => {
   <Navbar @toggle-nav="toggleNav" :open-nav="openNav" />
 
   <main class="relative overflow-hidden origin-top-left" ref="main">
-    <section class="relative h-screen overflow-hidden bg-amber-100" id="home">
-      <h1 class="text-8xl h-screen font-bold flex justify-center items-center">
-        hello world
-      </h1>
-    </section>
-
-    <section
-      class="relative h-screen overflow-hidden bg-amber-400"
-      id="architecture"
-    >
-      <h1 class="text-8xl h-screen font-bold flex justify-center items-center">
-        hello world
-      </h1>
-    </section>
+    <Hero />
   </main>
 </template>
 

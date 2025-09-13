@@ -17,7 +17,7 @@
 }
 
 @layer components {
-  btn {
+  button {
     @apply cursor-pointer;
   }
 
