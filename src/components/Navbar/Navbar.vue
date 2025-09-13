@@ -7,7 +7,7 @@ import {
   IMAGE_HOME,
   IMAGE_INTERIOR,
 } from "../../constans";
-import { onMounted, ref, watch } from "vue";
+import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import NavList from "../NavList";
 import { navList } from "./navbar";
 import { useScrollLock } from "../../utils/scrollLock.ts";
@@ -19,6 +19,9 @@ const containerOverlay = ref<HTMLElement | null>(null);
 const contentOverlay = ref<HTMLElement | null>(null);
 const navListRef = ref<HTMLElement | null>(null);
 const menuOverlayRef = ref<HTMLElement | null>(null);
+
+let tl: any = null;
+let tween: any = null;
 
 const emits = defineEmits<{
   (e: "toggleNav"): void;
@@ -60,10 +63,12 @@ onMounted(() => {
 watch(
   () => openNav,
   (isOpen) => {
+    tl?.kill();
+
     const menuOverlayChildren = menuOverlayRef.value
       ?.children as HTMLCollection;
 
-    const tl = gsap.timeline();
+    tl = gsap.timeline();
     if (isOpen) {
       tl.to(containerOverlay.value, {
         clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 175%)",
@@ -139,7 +144,8 @@ watch(
 watch(image, () => {
   if (!imgRef.value) return;
 
-  gsap.fromTo(
+  tween?.kill();
+  tween = gsap.fromTo(
     imgRef.value,
     { opacity: 0, scale: 1.15, rotate: 10 },
     { duration: 1.5, opacity: 1, scale: 1, rotate: 0, ease: "expo.out" },
@@ -157,6 +163,11 @@ const changeImage = (index: number) => {
     image.value = IMAGE_GALLERY[0];
   }
 };
+
+onBeforeUnmount(() => {
+  tl?.kill();
+  tween?.kill();
+});
 </script>
 
 <template>

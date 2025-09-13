@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import { IMAGE_HERO } from "../../constans";
 import gsap from "gsap";
-import { onMounted, ref } from "vue";
+import { onBeforeUnmount, onMounted, ref } from "vue";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 const imgHeroRef = ref<HTMLElement | null>(null);
+
+let tween: any = null;
 
 onMounted(() => {
   gsap.registerPlugin(ScrollTrigger);
 
   if (!imgHeroRef.value) return;
 
-  gsap.fromTo(
+  tween = gsap.timeline().fromTo(
     imgHeroRef.value,
     {
       yPercent: -15,
@@ -23,10 +25,15 @@ onMounted(() => {
         start: "top top",
         end: "bottom top",
         scrub: 1,
-        markers: true,
+        markers: false,
       },
     },
   );
+});
+
+onBeforeUnmount(() => {
+  tween?.scrollTrigger?.kill();
+  tween?.kill();
 });
 </script>
 
