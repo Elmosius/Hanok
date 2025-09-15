@@ -174,11 +174,11 @@ onBeforeUnmount(() => {
   <header class="relative overflow-hidden z-50">
     <nav class="fixed w-full py-15 px-15">
       <div class="w-full h-2 flex justify-between items-center">
-        <a href="#" class="text-accent font-bold text-sm md:text-lg lg:text-lg"
+        <a href="#" class="text-primary font-bold text-sm md:text-lg lg:text-lg"
           >한옥</a
         >
         <button
-          class="text-accent flex text-sm cursor-pointer group"
+          class="text-primary flex text-sm cursor-pointer group"
           @click="emits('toggleNav')"
         >
           <span class="flex flex-row items-center gap-x-3">

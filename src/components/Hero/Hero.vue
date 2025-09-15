@@ -60,8 +60,6 @@ onBeforeUnmount(() => {
       />
     </div>
   </section>
-
-  <section class="h-screen"></section>
 </template>
 
 <style scoped></style>

@@ -6,6 +6,7 @@ import { useScrollLock } from "./utils/scrollLock.ts";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { VueLenis } from "lenis/vue";
 import Hero from "./components/Hero";
+import Architecture from "./components/Architecture";
 
 const lenisRef = ref();
 const { lock, unlock } = useScrollLock();
@@ -69,6 +70,7 @@ onMounted(() => {
 
   <main class="relative overflow-hidden origin-top-left" ref="main">
     <Hero />
+    <Architecture />
   </main>
 </template>
 
