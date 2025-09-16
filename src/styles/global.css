@@ -45,7 +45,7 @@
   }
 
   .img-architecture {
-    @apply w-96 h-100 object-cover md:h-140 md:w-140 cursor-pointer;
+    @apply w-96 h-100 object-cover md:h-140 md:w-140 cursor-pointer hover:scale-99 transition-transform;
   }
 
   .title-architecture {

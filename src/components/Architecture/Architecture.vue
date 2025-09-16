@@ -70,7 +70,7 @@ onBeforeUnmount(() => {
           <div class="w-full lg:w-7/12 xl:w-full h-full">
             <HoverArchitecture>
               <img class="img-architecture lg:w-100 lg:h-135 xl:w-140 xl:h-185" src="/images/architectures/1.jpg" alt="architecture1" />
-              <div class="lg:flex lg:flex-row lg:pt-5 xl:w-140 wrap-break-word">
+              <div class="lg:flex lg:flex-row lg:pt-5 xl:w-140 wrap-break-word transition-transform">
                 <h3 class="title-architecture lg:flex-4">The Hanok Gate</h3>
                 <p class="desc-architecture lg:flex-12">A sturdy wooden gate, framed by stone walls and curved tiles, welcoming guests with timeless warmth.</p>
               </div>
@@ -88,7 +88,7 @@ onBeforeUnmount(() => {
           <HoverArchitecture>
             <img class="img-architecture lg:w-85 lg:h-120" src="/images/architectures/2.jpg" alt="architecture2" />
 
-            <div class="lg:flex lg:flex-row lg:pt-5 lg:w-84 wrap-break-word">
+            <div class="lg:flex lg:flex-row lg:pt-5 lg:w-84 wrap-break-word transition-transform">
               <h3 class="title-architecture lg:flex-5">Curved Roofs</h3>
               <p class="desc-architecture lg:flex-9">Elegant rooflines of Hanok, built to flow with the wind, sunlight, and seasons.</p>
             </div>
@@ -100,7 +100,7 @@ onBeforeUnmount(() => {
           <HoverArchitecture>
             <img class="img-architecture lg:w-95 lg:h-135" src="/images/architectures/4.jpg" alt="architecture4" />
 
-            <div class="lg:flex lg:flex-row lg:pt-5 lg:w-95 wrap-break-word">
+            <div class="lg:flex lg:flex-row lg:pt-5 lg:w-95 wrap-break-word transition-transform">
               <h3 class="title-architecture lg:flex-10">Patterns of Tradition</h3>
               <p class="desc-architecture lg:flex-10">Intricate wooden patterns and vibrant colors that reflect Korea’s artistic heritage.</p>
             </div>
@@ -111,7 +111,7 @@ onBeforeUnmount(() => {
         <div class="container-img-architecture lg:-translate-y-[25%] xl:-translate-y-[25%]">
           <HoverArchitecture>
             <img class="img-architecture lg:w-65 lg:h-85" src="/images/architectures/3.jpg" alt="architecture3" />
-            <div class="lg:flex lg:flex-row lg:pt-5 lg:w-65 wrap-break-word">
+            <div class="lg:flex lg:flex-row lg:pt-5 lg:w-65 wrap-break-word transition-transform">
               <h3 class="title-architecture lg:flex-7">Inside Hanok</h3>
               <p class="desc-architecture lg:flex-8">Soft light passes through hanji doors, filling the wooden interior with calm and serenity.</p>
             </div>

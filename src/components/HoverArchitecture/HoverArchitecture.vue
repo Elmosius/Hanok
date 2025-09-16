@@ -10,7 +10,6 @@ let tl: GSAPTimeline | null = null;
 
 onMounted(() => {
   if (!containerRef.value) return;
-
   if (isMobile) return;
 
   const img = containerRef.value.children[0] as HTMLElement;
@@ -34,22 +33,32 @@ watch(hover, (newVal) => {
   const text = containerRef.value.children[1] as HTMLElement;
   tl = gsap.timeline();
   if (newVal) {
+    gsap.set(text, {
+      clipPath: 'inset(0% 0% 100% 0%)',
+      rotate: 3,
+      y: 20,
+    });
+
     tl.to(text, {
       clipPath: 'inset(0% 0% 0% 0%)',
       rotate: 0,
       y: 0,
-      duration: 1.4,
+      duration: 0.8,
       ease: 'expo.out',
     });
   } else {
     tl.to(text, {
       clipPath: 'inset(100% 0% 0% 0%)',
-      rotate: 2,
+      rotate: -3,
       y: -20,
       duration: 0.8,
       ease: 'expo.inOut',
       onComplete: () => {
-        gsap.set(text, { clipPath: 'inset(0% 0% 100% 0%)', rotate: 3, y: 20 });
+        gsap.set(text, {
+          clipPath: 'inset(0% 0% 100% 0%)',
+          rotate: 3,
+          y: 20,
+        });
       },
     });
   }
