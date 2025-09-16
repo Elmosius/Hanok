@@ -40,21 +40,19 @@
     @apply pointer-events-none absolute left-0 bottom-0 h-[2px] w-1/2 origin-left scale-x-0 bg-accent;
   }
 
-    .container-img-architecture{
-        @apply h-full w-full flex flex-col;
-    }
+  .container-img-architecture {
+    @apply h-full w-full flex flex-col;
+  }
 
-    .img-architecture{
-        @apply w-96 h-100 object-cover md:h-140 md:w-140;
-    }
+  .img-architecture {
+    @apply w-96 h-100 object-cover md:h-140 md:w-140 cursor-pointer;
+  }
 
-    .title-architecture{
-        @apply pt-5 font-medium text-start md:text-center md:text-lg lg:pt-0 lg:text-base lg:text-start lg:after:content-[':'];
-    }
+  .title-architecture {
+    @apply pt-5 font-medium text-start md:text-center md:text-lg lg:pt-0 lg:text-base lg:text-start lg:after:content-[':'];
+  }
 
-    .desc-architecture{
-        @apply text-sm text-accent/70 md:text-base md:text-center md:px-15 lg:px-0 lg:text-start;
-    }
-
-
+  .desc-architecture {
+    @apply text-sm text-accent/70 md:text-base md:text-center md:px-15 lg:px-0 lg:text-start;
+  }
 }

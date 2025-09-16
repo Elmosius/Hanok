@@ -10,7 +10,7 @@ import {
 import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import NavList from "../NavList";
 import { navList } from "./navbar";
-import { useScrollLock } from "../../utils/scrollLock.ts";
+import { useScrollLock } from "../../utils/scrollLock";
 
 const image = ref(IMAGE_HOME[0]);
 

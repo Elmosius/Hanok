@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { onMounted, ref, watchEffect } from "vue";
-import gsap from "gsap";
-import Navbar from "./components/Navbar";
-import { useScrollLock } from "./utils/scrollLock.ts";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { VueLenis } from "lenis/vue";
-import Hero from "./components/Hero";
-import Architecture from "./components/Architecture";
+import { onMounted, ref, watchEffect } from 'vue';
+import gsap from 'gsap';
+import Navbar from './components/Navbar';
+import { useScrollLock } from './utils/scrollLock';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { VueLenis } from 'lenis/vue';
+import Hero from './components/Hero';
+import Architecture from './components/Architecture';
 
 const lenisRef = ref();
 const { lock, unlock } = useScrollLock();
@@ -28,7 +28,7 @@ const toggleNav = () => {
       y: 450,
       scale: 1.5,
       duration: 1.5,
-      ease: "power4.inOut",
+      ease: 'power4.inOut',
       delay: 0.2,
     });
   } else {
@@ -39,14 +39,14 @@ const toggleNav = () => {
       y: 0,
       scale: 1,
       duration: 1.2,
-      ease: "power4.inOut",
+      ease: 'power4.inOut',
     });
   }
 };
 
 watchEffect((onInvalidate) => {
   if (!lenisRef.value?.lenis) return;
-  lenisRef.value.lenis.on("scroll", ScrollTrigger.update);
+  lenisRef.value.lenis.on('scroll', ScrollTrigger.update);
 
   function update(time: number) {
     lenisRef.value.lenis.raf(time * 1000);
@@ -71,6 +71,8 @@ onMounted(() => {
   <main class="relative overflow-hidden origin-top-left" ref="main">
     <Hero />
     <Architecture />
+
+    <div class="h-dvh bg-amber-100" />
   </main>
 </template>
 
