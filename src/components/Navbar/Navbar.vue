@@ -1,16 +1,11 @@
 <script setup lang="ts">
-import { House, X } from "lucide-vue-next";
-import gsap from "gsap";
-import {
-  IMAGE_ARCHITECTURE,
-  IMAGE_GALLERY,
-  IMAGE_HOME,
-  IMAGE_INTERIOR,
-} from "../../constans";
-import { onBeforeUnmount, onMounted, ref, watch } from "vue";
-import NavList from "../NavList";
-import { navList } from "./navbar";
-import { useScrollLock } from "../../utils/scrollLock";
+import { House, X } from 'lucide-vue-next';
+import gsap from 'gsap';
+import { IMAGE_ARCHITECTURE, IMAGE_GALLERY, IMAGE_HOME, IMAGE_INTERIOR } from '../../constans';
+import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import NavList from '../NavList';
+import { navList } from './navbar';
+import { useScrollLock } from '../../utils/scrollLock';
 
 const image = ref(IMAGE_HOME[0]);
 
@@ -24,27 +19,22 @@ let tl: any = null;
 let tween: any = null;
 
 const emits = defineEmits<{
-  (e: "toggleNav"): void;
+  (e: 'toggleNav'): void;
 }>();
 
-const { openNav } = defineProps<{
+const { openNav, isContrast } = defineProps<{
   openNav: boolean;
+  isContrast: boolean;
 }>();
 
 const { scrollToId } = useScrollLock();
 
 onMounted(() => {
-  if (
-    !containerOverlay.value ||
-    !contentOverlay.value ||
-    !navListRef.value ||
-    !menuOverlayRef.value
-  )
-    return;
+  if (!containerOverlay.value || !contentOverlay.value || !navListRef.value || !menuOverlayRef.value) return;
 
   gsap.set(navListRef.value, {
     y: 50,
-    clipPath: "inset(0% 0% 100% 0%)",
+    clipPath: 'inset(0% 0% 100% 0%)',
     rotate: 5,
   });
 
@@ -56,7 +46,7 @@ onMounted(() => {
     rotate: 30,
   });
   gsap.set(containerOverlay.value, {
-    clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+    clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
   });
 });
 
@@ -65,15 +55,14 @@ watch(
   (isOpen) => {
     tl?.kill();
 
-    const menuOverlayChildren = menuOverlayRef.value
-      ?.children as HTMLCollection;
+    const menuOverlayChildren = menuOverlayRef.value?.children as HTMLCollection;
 
     tl = gsap.timeline();
     if (isOpen) {
       tl.to(containerOverlay.value, {
-        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 175%)",
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 175%)',
         duration: 1.5,
-        ease: "expo.inOut",
+        ease: 'expo.inOut',
       })
         .to(
           contentOverlay.value,
@@ -84,9 +73,9 @@ watch(
             duration: 1.5,
             translateX: 0,
             translateY: 0,
-            ease: "expo.inOut",
+            ease: 'expo.inOut',
           },
-          0,
+          0
         )
         .to(
           navListRef.value,
@@ -94,11 +83,11 @@ watch(
             y: 0,
             duration: 1.5,
             rotate: 0,
-            clipPath: "inset(0% 0% 0% 0%)",
+            clipPath: 'inset(0% 0% 0% 0%)',
             stagger: 0.3,
-            ease: "power4",
+            ease: 'power4',
           },
-          "-=0.8",
+          '-=0.8'
         )
         .from(
           menuOverlayChildren,
@@ -106,21 +95,21 @@ watch(
             delay: 0.2,
             rotate: -3,
             duration: 1.5,
-            ease: "expo.inOut",
+            ease: 'expo.inOut',
             stagger: 0.3,
             opacity: 0,
           },
-          0,
+          0
         );
     } else {
       tl.to(containerOverlay.value, {
-        clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
         duration: 1.5,
-        ease: "expo.inOut",
+        ease: 'expo.inOut',
         onComplete: () => {
           gsap.set(navListRef.value, {
             y: 50,
-            clipPath: "inset(100% 0% 0% 0%)",
+            clipPath: 'inset(100% 0% 0% 0%)',
             rotate: 5,
           });
         },
@@ -135,21 +124,17 @@ watch(
           rotate: 30,
           delay: 0.7,
         },
-        0,
+        0
       );
     }
-  },
+  }
 );
 
 watch(image, () => {
   if (!imgRef.value) return;
 
   tween?.kill();
-  tween = gsap.fromTo(
-    imgRef.value,
-    { opacity: 0, scale: 1.15, rotate: 10 },
-    { duration: 1.5, opacity: 1, scale: 1, rotate: 0, ease: "expo.out" },
-  );
+  tween = gsap.fromTo(imgRef.value, { opacity: 0, scale: 1.15, rotate: 10 }, { duration: 1.5, opacity: 1, scale: 1, rotate: 0, ease: 'expo.out' });
 });
 
 const changeImage = (index: number) => {
@@ -173,14 +158,9 @@ onBeforeUnmount(() => {
 <template>
   <header class="relative overflow-hidden z-50">
     <nav class="fixed w-full py-15 px-15">
-      <div class="w-full h-2 flex justify-between items-center">
-        <a href="#" class="text-primary font-bold text-sm md:text-lg lg:text-lg"
-          >한옥</a
-        >
-        <button
-          class="text-primary flex text-sm cursor-pointer group"
-          @click="emits('toggleNav')"
-        >
+      <div :class="['w-full h-2 flex justify-between items-center transition-colors duration-500', isContrast ? 'text-accent' : 'text-primary']">
+        <a href="#" class="font-bold text-sm md:text-lg lg:text-lg">한옥</a>
+        <button class="flex text-sm cursor-pointer group" @click="emits('toggleNav')">
           <span class="flex flex-row items-center gap-x-3">
             <span class="font-medium">Menu</span>
             <House class="navHover" />
@@ -190,22 +170,12 @@ onBeforeUnmount(() => {
     </nav>
   </header>
 
-  <div
-    class="fixed h-screen bg-accent overflow-hidden z-60"
-    ref="containerOverlay"
-  >
+  <div class="fixed h-screen bg-accent overflow-hidden z-60" ref="containerOverlay">
     <div class="h-full w-screen py-15 px-15 z-60" ref="contentOverlay">
       <div class="w-full h-2 flex justify-between items-center">
-        <a
-          href="#"
-          class="text-primary font-medium text-sm md:text-lg lg:text-lg"
-          >hanok</a
-        >
+        <a href="#" class="text-primary font-medium text-sm md:text-lg lg:text-lg">hanok</a>
 
-        <button
-          class="text-primary flex text-sm cursor-pointer group"
-          @click="emits('toggleNav')"
-        >
+        <button class="text-primary flex text-sm cursor-pointer group" @click="emits('toggleNav')">
           <span class="flex flex-row items-center gap-x-3" ref="menuOverlayRef">
             <span class="font-medium">Close</span>
             <X class="navHover" />
@@ -213,28 +183,16 @@ onBeforeUnmount(() => {
         </button>
       </div>
 
-      <div
-        class="w-full h-full relative flex items-center justify-center lg:px-30"
-      >
-        <div
-          class="hidden lg:flex lg:w-full h-full items-center justify-center"
-        >
+      <div class="w-full h-full relative flex items-center justify-center lg:px-30">
+        <div class="hidden lg:flex lg:w-full h-full items-center justify-center">
           <img :src="image" alt="1" class="w-72 h-108" ref="imgRef" />
-          <div
-            class="w-100 h-130 border-50 border-x-63 border-accent absolute border-mask"
-          />
+          <div class="w-100 h-130 border-50 border-x-63 border-accent absolute border-mask" />
         </div>
 
         <div class="text-primary/95 w-full md:px-15 lg:px-10">
-          <ul
-            class="text-5xl md:text-6xl lg:text-5xl font-medium flex flex-col gap-y-5"
-          >
+          <ul class="text-5xl md:text-6xl lg:text-5xl font-medium flex flex-col gap-y-5">
             <NavList v-for="(item, i) in navList" :key="i">
-              <li
-                ref="navListRef"
-                class="relative pb-2 cursor-pointer"
-                @mouseenter="changeImage(i)"
-              >
+              <li ref="navListRef" class="relative pb-2 cursor-pointer" @mouseenter="changeImage(i)">
                 <button
                   @click="
                     () => {

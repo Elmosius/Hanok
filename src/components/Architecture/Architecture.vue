@@ -7,6 +7,7 @@ const title = ref<HTMLElement | null>(null);
 const container = ref<HTMLElement | null>(null);
 const img2 = ref<HTMLElement | null>(null);
 const img3 = ref<HTMLElement | null>(null);
+
 const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
 let tween: GSAPTween | null = null;
@@ -40,7 +41,7 @@ onMounted(() => {
         start: 'top top',
         end: 'bottom bottom-=20%',
         scrub: true,
-        markers: true,
+        markers: false,
       },
     })
     .to(img2.value, { y: '-=120' })

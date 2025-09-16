@@ -11,7 +11,6 @@ let tl: GSAPTimeline | null = null;
 onMounted(() => {
   if (!containerRef.value) return;
 
-  console.log(isMobile);
   if (isMobile) return;
 
   const img = containerRef.value.children[0] as HTMLElement;
