@@ -133,7 +133,6 @@ watch(
 watch(image, () => {
   if (!imgRef.value) return;
 
-  tween?.kill();
   tween = gsap.fromTo(imgRef.value, { opacity: 0, scale: 1.15, rotate: 10 }, { duration: 1.5, opacity: 1, scale: 1, rotate: 0, ease: 'expo.out' });
 });
 
@@ -170,29 +169,29 @@ onBeforeUnmount(() => {
     </nav>
   </header>
 
-  <div class="fixed h-screen bg-accent overflow-hidden z-60" ref="containerOverlay">
-    <div class="h-full w-screen py-15 px-15 z-60" ref="contentOverlay">
+  <div class="fixed h-screen bg-accent overflow-hidden z-60 will-change-transform" ref="containerOverlay">
+    <div class="h-full w-screen py-15 px-15 z-60 will-change-transform" ref="contentOverlay">
       <div class="w-full h-2 flex justify-between items-center">
         <a href="#" class="text-primary font-medium text-sm md:text-lg lg:text-lg">hanok</a>
 
         <button class="text-primary flex text-sm cursor-pointer group" @click="emits('toggleNav')">
           <span class="flex flex-row items-center gap-x-3" ref="menuOverlayRef">
-            <span class="font-medium">Close</span>
-            <X class="navHover" />
+            <span class="font-medium will-change-transform">Close</span>
+            <X class="navHover will-change-transform" />
           </span>
         </button>
       </div>
 
       <div class="w-full h-full relative flex items-center justify-center lg:px-30">
         <div class="hidden lg:flex lg:w-full h-full items-center justify-center">
-          <img :src="image" alt="1" class="w-72 h-108" ref="imgRef" />
+          <img :src="image" alt="1" class="w-72 h-108 will-change-transform" ref="imgRef" />
           <div class="w-100 h-130 border-50 border-x-63 border-accent absolute border-mask" />
         </div>
 
         <div class="text-primary/95 w-full md:px-15 lg:px-10">
           <ul class="text-5xl md:text-6xl lg:text-5xl font-medium flex flex-col gap-y-5">
             <NavList v-for="(item, i) in navList" :key="i">
-              <li ref="navListRef" class="relative pb-2 cursor-pointer" @mouseenter="changeImage(i)">
+              <li ref="navListRef" class="relative pb-2 cursor-pointer will-change-transform" @mouseenter="changeImage(i)">
                 <button
                   @click="
                     () => {
@@ -203,8 +202,8 @@ onBeforeUnmount(() => {
                 >
                   {{ item.name }}
                 </button>
-                <span class="borderNavList" />
-                <span class="borderNavList2" />
+                <span class="borderNavList will-change-transform" />
+                <span class="borderNavList2 will-change-transform" />
               </li>
             </NavList>
           </ul>

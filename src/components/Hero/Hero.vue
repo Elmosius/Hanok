@@ -48,7 +48,7 @@ onBeforeUnmount(() => {
         </p>
       </div>
 
-      <img ref="imgHeroRef" :src="IMAGE_HERO" alt="home" class="w-full h-[120%] object-cover brightness-90 z-5" />
+      <img ref="imgHeroRef" :src="IMAGE_HERO" alt="home" class="w-full h-[120%] object-cover brightness-90 z-5 will-change-transform" />
     </div>
   </section>
 </template>

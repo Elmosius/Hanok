@@ -27,7 +27,6 @@ function disableLock() {
     document.removeEventListener('keydown', blockKeys as EventListener, )
 }
 
-
 export function useScrollLock(initial = false) {
     const isLocked = ref(initial)
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { onBeforeUnmount, ref, watch } from "vue";
-import gsap from "gsap";
+import { onBeforeUnmount, ref, watch } from 'vue';
+import gsap from 'gsap';
 
 const navList = ref<HTMLElement | null>(null);
 const navListHover = ref(false);
@@ -18,15 +18,15 @@ watch(navListHover, (newValue) => {
     tween = gsap.to(border, {
       scaleX: 1,
       duration: 0.5,
-      ease: "expo.in",
-      transformOrigin: "left",
+      ease: 'expo.in',
+      transformOrigin: 'left',
     });
   } else {
     tween = gsap.to(border, {
       scaleX: 0,
       duration: 0.5,
-      ease: "expo.in",
-      transformOrigin: "right",
+      ease: 'expo.in',
+      transformOrigin: 'right',
     });
   }
 });
@@ -37,11 +37,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div
-    ref="navList"
-    @mouseenter="navListHover = true"
-    @mouseleave="navListHover = false"
-  >
+  <div ref="navList" @mouseenter="navListHover = true" @mouseleave="navListHover = false">
     <slot />
   </div>
 </template>

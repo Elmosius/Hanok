@@ -83,7 +83,7 @@ onBeforeUnmount(() => {
 
   <Navbar @toggle-nav="toggleNav" :open-nav="openNav" :is-contrast="isContrast" />
 
-  <main class="relative overflow-hidden origin-top-left" ref="main">
+  <main class="relative overflow-hidden origin-top-left will-change-transform" ref="main">
     <Hero />
 
     <Architecture ref="architectureRef" />

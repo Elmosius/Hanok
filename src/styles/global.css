@@ -36,6 +36,7 @@
   .borderNavList {
     @apply pointer-events-none absolute left-0 bottom-0 h-[2px] w-1/2 origin-left scale-x-0 bg-red-100;
   }
+
   .borderNavList2 {
     @apply pointer-events-none absolute left-0 bottom-0 h-[2px] w-1/2 origin-left scale-x-0 bg-accent;
   }
@@ -45,7 +46,7 @@
   }
 
   .img-architecture {
-    @apply w-96 h-100 object-cover md:h-140 md:w-140 cursor-pointer hover:scale-99 transition-transform;
+    @apply w-96 h-100 object-cover md:h-140 md:w-140 cursor-pointer hover:scale-99 will-change-transform;
   }
 
   .title-architecture {

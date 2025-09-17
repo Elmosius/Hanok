@@ -60,7 +60,7 @@ onBeforeUnmount(() => {
     <div class="h-full w-full px-15 md:px-30 container mx-auto relative">
       <div class="h-full w-full flex flex-col gap-y-2 text-accent font-medium relative">
         <p class="md:text-xl lg:hidden">Traditional Harmony</p>
-        <h2 class="font-semibold text-5xl wrap-break-word md:text-7xl md:mt-5 lg:text-9xl" ref="title">Architecture</h2>
+        <h2 class="font-semibold text-5xl wrap-break-word md:text-7xl md:mt-5 lg:text-9xl will-change-transform" ref="title">Architecture</h2>
         <p class="font-light mt-3 md:text-xl lg:hidden">Every curve and detail of Hanok is designed to live in balance with nature — the sky, the seasons, and the land.</p>
       </div>
 
@@ -70,7 +70,7 @@ onBeforeUnmount(() => {
           <div class="w-full lg:w-7/12 xl:w-full h-full">
             <HoverArchitecture>
               <img class="img-architecture lg:w-100 lg:h-135 xl:w-140 xl:h-185" src="/images/architectures/1.jpg" alt="architecture1" />
-              <div class="lg:flex lg:flex-row lg:pt-5 xl:w-140 wrap-break-word transition-transform">
+              <div class="lg:flex lg:flex-row lg:pt-5 xl:w-140 wrap-break-word will-change-transform">
                 <h3 class="title-architecture lg:flex-4">The Hanok Gate</h3>
                 <p class="desc-architecture lg:flex-12">A sturdy wooden gate, framed by stone walls and curved tiles, welcoming guests with timeless warmth.</p>
               </div>
@@ -84,11 +84,11 @@ onBeforeUnmount(() => {
         </div>
 
         <!--img 2-->
-        <div class="container-img-architecture lg:absolute inset-0 lg:translate-x-[55%] lg:translate-y-[30%] xl:translate-x-[65%]" ref="img2">
+        <div class="container-img-architecture lg:absolute inset-0 lg:translate-x-[55%] lg:translate-y-[30%] xl:translate-x-[65%] will-change-transform" ref="img2">
           <HoverArchitecture>
             <img class="img-architecture lg:w-85 lg:h-120" src="/images/architectures/2.jpg" alt="architecture2" />
 
-            <div class="lg:flex lg:flex-row lg:pt-5 lg:w-84 wrap-break-word transition-transform">
+            <div class="lg:flex lg:flex-row lg:pt-5 lg:w-84 wrap-break-word will-change-transform">
               <h3 class="title-architecture lg:flex-5">Curved Roofs</h3>
               <p class="desc-architecture lg:flex-9">Elegant rooflines of Hanok, built to flow with the wind, sunlight, and seasons.</p>
             </div>
@@ -100,7 +100,7 @@ onBeforeUnmount(() => {
           <HoverArchitecture>
             <img class="img-architecture lg:w-95 lg:h-135" src="/images/architectures/4.jpg" alt="architecture4" />
 
-            <div class="lg:flex lg:flex-row lg:pt-5 lg:w-95 wrap-break-word transition-transform">
+            <div class="lg:flex lg:flex-row lg:pt-5 lg:w-95 wrap-break-word will-change-transform">
               <h3 class="title-architecture lg:flex-10">Patterns of Tradition</h3>
               <p class="desc-architecture lg:flex-10">Intricate wooden patterns and vibrant colors that reflect Korea’s artistic heritage.</p>
             </div>
@@ -111,7 +111,7 @@ onBeforeUnmount(() => {
         <div class="container-img-architecture lg:-translate-y-[25%] xl:-translate-y-[25%]">
           <HoverArchitecture>
             <img class="img-architecture lg:w-65 lg:h-85" src="/images/architectures/3.jpg" alt="architecture3" />
-            <div class="lg:flex lg:flex-row lg:pt-5 lg:w-65 wrap-break-word transition-transform">
+            <div class="lg:flex lg:flex-row lg:pt-5 lg:w-65 wrap-break-word will-change-transform">
               <h3 class="title-architecture lg:flex-7">Inside Hanok</h3>
               <p class="desc-architecture lg:flex-8">Soft light passes through hanji doors, filling the wooden interior with calm and serenity.</p>
             </div>
