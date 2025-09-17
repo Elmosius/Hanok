@@ -1,5 +1,25 @@
-# Vue 3 + TypeScript + Vite
+# 🏯 Hanok (한옥)
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+**Hanok** adalah mini project **Interactive Landing Page** yang menampilkan keindahan rumah tradisional Korea.  
+Website ini masih dalam tahap pengembangan (🚧).
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## 🚀 Tech Stack
+- [Vue 3](https://vuejs.org/) (Composition API + Vite + TS)
+- [GSAP](https://gsap.com/) (scroll & animation library)
+- [Lenis](https://lenis.studiofreight.com/) (smooth scrolling)
+
+## 📂 Project Setup
+
+```bash
+# clone repo
+git clone https://github.com/username/Hanok.git
+cd Hanok
+
+# install dependencies
+npm install
+
+# run development server
+npm run dev
+
+# build for production
+npm run build
