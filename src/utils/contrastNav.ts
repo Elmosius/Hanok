@@ -1,5 +1,5 @@
-import { ref } from 'vue';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ref } from 'vue';
 
 export const useContrastNav = () => {
   const isContrast = ref(false);

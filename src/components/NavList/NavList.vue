@@ -12,7 +12,8 @@ watch(navListHover, (newValue) => {
   tween?.kill();
 
   const parent = navList.value.children[0] as HTMLElement;
-  const border = parent.children[1] as HTMLElement;
+  const border = parent.querySelector('.borderNavList') as HTMLElement | null;
+  if (!border) return;
 
   if (newValue) {
     tween = gsap.to(border, {
