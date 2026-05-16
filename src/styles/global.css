@@ -7,6 +7,23 @@
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
     scrollbar-width: none;
+    scroll-behavior: smooth;
+    background: #000;
+  }
+
+  body {
+    @apply bg-accent text-primary;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
@@ -34,7 +51,7 @@
   }
 
   .borderNavList {
-    @apply pointer-events-none absolute left-0 bottom-0 h-[2px] w-1/2 origin-left scale-x-0 bg-red-100;
+    @apply pointer-events-none absolute left-0 bottom-0 h-[2px] w-1/2 origin-left scale-x-0 bg-primary;
   }
 
   .borderNavList2 {
@@ -46,7 +63,7 @@
   }
 
   .img-architecture {
-    @apply w-96 h-100 object-cover md:h-140 md:w-140 cursor-pointer hover:scale-99 will-change-transform;
+    @apply w-full h-100 object-cover md:h-140 md:w-140 cursor-pointer transition-transform duration-700 hover:scale-[0.99] will-change-transform;
   }
 
   .title-architecture {

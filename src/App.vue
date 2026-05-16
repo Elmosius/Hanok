@@ -8,6 +8,10 @@ import { VueLenis } from 'lenis/vue';
 import Hero from './components/Hero';
 import Architecture from './components/Architecture';
 import { useContrastNav } from './utils/contrastNav';
+import Intro from './components/Intro';
+import Interior from './components/Interior';
+import Gallery from './components/Gallery';
+import Footer from './components/Footer';
 
 const lenisRef = ref();
 const { lock, unlock } = useScrollLock();
@@ -15,7 +19,9 @@ const main = ref<HTMLElement | null>(null);
 const openNav = ref(false);
 
 const { isContrast, registerSection, clear } = useContrastNav();
+const introRef = ref<InstanceType<typeof Intro> | null>(null);
 const architectureRef = ref<InstanceType<typeof Architecture> | null>(null);
+const footerRef = ref<InstanceType<typeof Footer> | null>(null);
 
 let tl: GSAPTimeline | null = null;
 
@@ -67,9 +73,16 @@ watchEffect((onInvalidate) => {
 
 onMounted(() => {
   gsap.registerPlugin(ScrollTrigger);
-  if (!architectureRef.value) return;
 
-  registerSection({ el: architectureRef.value.$el, contrast: true });
+  if (introRef.value) {
+    registerSection({ el: introRef.value.$el, contrast: true });
+  }
+  if (architectureRef.value) {
+    registerSection({ el: architectureRef.value.$el, contrast: true });
+  }
+  if (footerRef.value) {
+    registerSection({ el: footerRef.value.$el, contrast: true });
+  }
 });
 
 onBeforeUnmount(() => {
@@ -86,9 +99,15 @@ onBeforeUnmount(() => {
   <main class="relative overflow-hidden origin-top-left will-change-transform" ref="main">
     <Hero />
 
+    <Intro ref="introRef" />
+
     <Architecture ref="architectureRef" />
 
-    <div class="h-[200vh] bg-accent" ref="interiorRef" />
+    <Interior />
+
+    <Gallery />
+
+    <Footer ref="footerRef" />
   </main>
 </template>
 

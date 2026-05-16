@@ -40,13 +40,15 @@ export function useScrollLock(initial = false) {
 
     function scrollToId(id: string) {
         const el = document.getElementById(id)
-        if(!el) return
+        if (!el) return
 
         setTimeout(() => {
-            window.scrollTo(el.offsetLeft, el.offsetTop)
-
-        }, 500)
-
+            window.scrollTo({
+                top: el.offsetTop,
+                left: 0,
+                behavior: 'smooth',
+            })
+        }, 650)
     }
 
     return {

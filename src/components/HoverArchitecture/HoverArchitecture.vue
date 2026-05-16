@@ -1,26 +1,27 @@
 <script setup lang="ts">
 import gsap from 'gsap';
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { isMobileViewport, killGsap } from '../../utils/motion';
 
 const hover = ref(false);
 const containerRef = ref<HTMLElement | null>(null);
 
-const isMobile = window.matchMedia('(max-width: 768px)').matches;
 let tl: GSAPTimeline | null = null;
+const onMouseEnter = () => {
+  hover.value = true;
+};
+const onMouseLeave = () => {
+  hover.value = false;
+};
 
 onMounted(() => {
   if (!containerRef.value) return;
-  if (isMobile) return;
+  if (isMobileViewport()) return;
 
   const img = containerRef.value.children[0] as HTMLElement;
 
-  img.addEventListener('mouseenter', () => {
-    hover.value = true;
-  });
-
-  img.addEventListener('mouseleave', () => {
-    hover.value = false;
-  });
+  img.addEventListener('mouseenter', onMouseEnter);
+  img.addEventListener('mouseleave', onMouseLeave);
 
   const text = containerRef.value.children[1] as HTMLElement;
   gsap.set(text, { clipPath: 'inset(0% 0% 100% 0%)', rotate: 3, y: 20 });
@@ -28,7 +29,7 @@ onMounted(() => {
 
 watch(hover, (newVal) => {
   if (!containerRef.value) return;
-  if (isMobile) return;
+  if (isMobileViewport()) return;
 
   const text = containerRef.value.children[1] as HTMLElement;
   tl = gsap.timeline();
@@ -68,15 +69,10 @@ onBeforeUnmount(() => {
   if (!containerRef.value) return;
   const img = containerRef.value.children[0] as HTMLElement;
 
-  img.removeEventListener('mouseenter', () => {
-    hover.value = true;
-  });
+  img.removeEventListener('mouseenter', onMouseEnter);
+  img.removeEventListener('mouseleave', onMouseLeave);
 
-  img.removeEventListener('mouseleave', () => {
-    hover.value = false;
-  });
-
-  tl?.kill();
+  killGsap(tl);
 });
 </script>
 
